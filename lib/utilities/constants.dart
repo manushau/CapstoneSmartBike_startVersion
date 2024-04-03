@@ -65,3 +65,10 @@ const kSimpleTextPurple = TextStyle(
   fontWeight: FontWeight.normal,
   color: kLoginRegisterBtnColour,
 );
+
+const kSubSubTitlePurple = TextStyle(
+    fontSize: 18,
+    fontWeight: FontWeight.bold,
+    color: kLoginRegisterBtnColour,
+    letterSpacing: 2,
+    fontStyle: FontStyle.italic);

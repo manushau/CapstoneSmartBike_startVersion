@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:phone_app/pages/login.dart';
 import 'package:phone_app/pages/privacy.dart';
 import 'package:phone_app/pages/terminate_account.dart';
 import 'package:phone_app/utilities/constants.dart';
@@ -14,7 +15,7 @@ import 'contact.dart';
 import 'information.dart';
 
 class Setting extends StatefulWidget {
-  const Setting({super.key, required this.title});
+  const Setting({Key? key, required this.title}) : super(key: key);
   final String title;
 
   @override
@@ -22,14 +23,14 @@ class Setting extends StatefulWidget {
 }
 
 class _Setting extends State<Setting> {
-  int _currentIndex = 0;
+  int _currentIndex = 2; // Set the current index to 2 for Settings page
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: kLoginRegisterBtnColour
-            .withOpacity(0.9), // Set the background color
+        backgroundColor:
+        kLoginRegisterBtnColour.withOpacity(0.9), // Set the background color
         leading: IconButton(
           icon: Icon(Icons.arrow_back),
           color: Colors.white,
@@ -48,14 +49,14 @@ class _Setting extends State<Setting> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              const SizedBox(height: 50),
-              const Text(
+              SizedBox(height: 50),
+              Text(
                 "Settings",
                 style: kSubTitleOfPage,
                 textAlign: TextAlign.center,
               ),
-              const SizedBox(height: 30),
-              const SizedBox(height: 10),
+              SizedBox(height: 30),
+              SizedBox(height: 10),
               AccountContainer(
                 fieldName: 'Account',
                 typeIcon: Icons.account_circle,
@@ -68,7 +69,7 @@ class _Setting extends State<Setting> {
                 },
                 arrowOptional: Icons.arrow_forward,
               ),
-              const SizedBox(height: 10),
+              SizedBox(height: 10),
               AccountContainer(
                 fieldName: 'Information',
                 typeIcon: Icons.info,
@@ -82,7 +83,7 @@ class _Setting extends State<Setting> {
                 },
                 arrowOptional: Icons.arrow_forward,
               ),
-              const SizedBox(height: 10),
+              SizedBox(height: 10),
               AccountContainer(
                 fieldName: 'Help',
                 typeIcon: Icons.contact_support,
@@ -96,7 +97,22 @@ class _Setting extends State<Setting> {
                 },
                 arrowOptional: Icons.arrow_forward,
               ),
-              const SizedBox(height: 60),
+              SizedBox(height: 10),
+              AccountContainer(
+                fieldName: 'Logout',
+                typeIcon: Icons.exit_to_app,
+                onPressed: () {
+                  // Perform logout actions here, such as clearing authentication tokens.
+                  // Navigate to the login screen or any other desired screen.
+                  Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(builder: (context) => LoginPage()),
+                        (route) => false, // Clear all routes except the new login page.
+                  );
+                },
+                arrowOptional: Icons.arrow_forward,
+              ),
+              SizedBox(height: 60),
             ],
           ),
         ),
@@ -123,12 +139,7 @@ class _Setting extends State<Setting> {
                 );
                 break;
               case 2:
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => Setting(title: "Settings"),
-                  ),
-                );
+              // Do nothing as the user is already on the Settings page
                 break;
             }
           });

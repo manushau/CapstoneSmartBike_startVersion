@@ -46,7 +46,9 @@ class ContactUsScreen extends StatelessWidget {
                   padding: const EdgeInsets.fromLTRB(16.0, 16.0, 16.0, 0),
                   child: Container(
                       margin: EdgeInsets.only(bottom: 16),
-                      child: InputTextField(buttonText: 'Subject')),
+                      child: InputTextField(
+                        buttonText: 'Subject',
+                      )),
                 ),
                 SizedBox(height: 20),
                 Padding(

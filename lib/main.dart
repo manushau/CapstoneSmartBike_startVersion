@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:phone_app/pages/signup.dart';
 import 'pages/login.dart';
+
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         useMaterial3: true,
       ),
-      home: LoginPage(),
+      home: SignUpPage(),
       //home: MapPage(),
     );
   }
